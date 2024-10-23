@@ -30,3 +30,19 @@
 *.exe
 *.out
 *.app
+
+# Output directories
+build/
+out/
+cmake-build-*/
+
+# User-specific settings
+CMakeUserPresets.json
+
+# IDE files
+.vs/
+.idea/
+.vscode/
+
+# Other common files
+.DS_Store
