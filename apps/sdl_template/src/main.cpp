@@ -4,7 +4,6 @@
 
 #include <iostream>
 
-int main(int argc, char** argv)
-{
-    std::cout << "Hello World!\n";
+int main(int argc, char** argv) {
+  std::cout << "Hello World!\n";
 }
