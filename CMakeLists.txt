@@ -10,4 +10,9 @@ project(sdl_template
         HOMEPAGE_URL "%%url%%"
         LANGUAGES CXX C)
 
+include(cmake/CPM.cmake)
+
+CPMAddPackage("gh:fmtlib/fmt#10.2.1")
+CPMAddPackage("gh:libsdl-org/sdl#preview-3.1.3")
+
 add_subdirectory(apps)
