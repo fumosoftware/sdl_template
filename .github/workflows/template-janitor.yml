@@ -35,7 +35,7 @@ jobs:
           mv apps/sdl_template apps/${{ env.SAFE_PROJECT_NAME }}
           
           # fill in placeholder for URL
-          find apps -type f -exec sed -i "s|%%url%%|${{ env.NEW_URL }}|gi" CMakeLists.txt {} +
+          find apps -type f -exec sed -i "s|%%url%%|https://github.com/${{ env.NEW_ORG }}/${{ env.NEW_PROJ }}|gi" CMakeLists.txt {} +
 
       #  - name: Clean Up
       #    run: |
