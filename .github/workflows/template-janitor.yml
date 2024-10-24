@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   template-setup:
+    if: github.repository != 'fumosoftware/sdl_template'
     runs-on: ubuntu-latest
 
     steps:
