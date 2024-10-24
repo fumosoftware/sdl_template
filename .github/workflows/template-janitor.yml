@@ -32,7 +32,7 @@ jobs:
           # rename the CMake Project to match this project
           find apps -type f -exec sed -i "s/sdl_template/${{ env.SAFE_PROJECT_NAME }}/gi" CMakeLists.txt {} +
           
-          mv apps/sdl_template apps/${{ end.SAFE_PROJECT_NAME }}
+          mv apps/sdl_template apps/${{ env.SAFE_PROJECT_NAME }}
           
           # fill in placeholder for URL
           find apps -type f -exec sed -i "s|%%url%%|${{ env.NEW_URL }}|gi" CMakeLists.txt {} +
