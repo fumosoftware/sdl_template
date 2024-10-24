@@ -35,6 +35,14 @@ jobs:
           # fill in placeholder for URL
           sed -i "s|%%url%%|${{ env.NEW_URL }}|gi" CMakeLists.txt
 
-      - name: Clean Up
-        run: |
-          rm .github/workflows/template-janitor.yml
+      #  - name: Clean Up
+      #    run: |
+      #      rm .github/workflows/template-janitor.yml
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: '-A'
+          author_name: Template Janitor
+          message: Cleanup template
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
