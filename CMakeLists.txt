@@ -4,15 +4,15 @@ if(NOT DEFINED CMAKE_CXX_STANDARD)
     set(CMAKE_CXX_STANDARD 23)
 endif()
 
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 project(sdl_template
         VERSION 0.0.1
         DESCRIPTION "My SDL project"
         HOMEPAGE_URL "%%url%%"
         LANGUAGES CXX C)
 
-include(cmake/CPM.cmake)
-
-CPMAddPackage("gh:fmtlib/fmt#10.2.1")
-CPMAddPackage("gh:libsdl-org/sdl#preview-3.1.3")
+include(cmake/Dependencies.cmake)
+include(cmake/SetProjectWarnings.cmake)
 
 add_subdirectory(apps)

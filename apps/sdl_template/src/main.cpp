@@ -5,7 +5,7 @@
 #include <iostream>
 #include "SDL3/SDL.h"
 
-int main(int argc, char** argv) {
+int main([[maybe_unused]]int argc, [[maybe_unused]]char** argv) {
   if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != true) {
     return EXIT_FAILURE;
   }
