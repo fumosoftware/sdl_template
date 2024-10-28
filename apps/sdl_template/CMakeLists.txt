@@ -10,7 +10,14 @@ project(sdl_template_app
         HOMEPAGE_URL "%%url%%"
         LANGUAGES CXX C)
 
-add_executable(sdl_template_app src/main.cpp)
+add_executable(sdl_template_app src/main.cpp
+        src/app_main.cpp
+        src/app_main.h
+        src/sdl_init.cpp
+        src/sdl_init.h
+        src/app_error.h
+        src/sdl_context.h
+        src/app_settings.h)
 target_link_libraries(sdl_template_app
         PRIVATE
         fmt::fmt
