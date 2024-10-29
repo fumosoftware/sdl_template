@@ -4,15 +4,22 @@
 
 #include "sdl/context.h"
 
+sdl::Context unwrap_or_panic(std::expected<sdl::Context, std::string>&& maybe) {
+  // Something really really bad has happened!
+  // SDL_Quit will have already been called, and SDL_Window*/SDL_Renderer* would have
+  // already been destroyed/uninitialized right here.
+  SDL_assert(maybe.has_value() == true);
+  if(!maybe) {
+    SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"Error: %s",maybe.error().c_str());
+    std::exit(1);
+  }
+
+  return *maybe;
+}
+
 int main([[maybe_unused]]int argc, [[maybe_unused]]char** argv) {
   //TODO: Create settings from a config file or command line arguments
-
-  auto maybe_context = setup_sdl();
-  if(!maybe_context) {
-    SDL_Log("%s", maybe_context.error().c_str());
-    return 1;
-  }
-  auto context = *maybe_context;
+  auto context = unwrap_or_panic(setup_sdl());
 
   bool is_running{true};
   while(is_running) {
