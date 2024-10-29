@@ -11,13 +11,11 @@ project(sdl_template_app
         LANGUAGES CXX C)
 
 add_executable(sdl_template_app src/main.cpp
-        src/app_main.cpp
-        src/app_main.h
-        src/sdl_init.cpp
-        src/sdl_init.h
-        src/app_error.h
-        src/sdl_context.h
-        src/app_settings.h)
+        src/sdl/video.h
+        src/sdl/graphics_context.h
+        src/sdl/context.cpp
+        src/sdl/context.h
+        src/sdl/video.cpp)
 target_link_libraries(sdl_template_app
         PRIVATE
         fmt::fmt
