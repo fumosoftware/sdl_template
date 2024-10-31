@@ -5,7 +5,7 @@
 #ifndef sdl_template_SDL_VIDEO_H
 #define sdl_template_SDL_VIDEO_H
 
-#include "SDL3/SDL.h"
+#include "SDL.h"
 #include "graphics_context.h"
 
 namespace sdl {

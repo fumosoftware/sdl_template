@@ -6,12 +6,12 @@
 #define sdl_template_SDL_GRAPHICS_CONTEXT_H
 
 #include <vector>
-#include "SDL3/SDL.h"
+#include "SDL.h"
 
 namespace sdl {
 struct GraphicsContext {
   SDL_Renderer*             renderer{nullptr};
-  std::vector<SDL_Texture*> textures{nullptr};
+  std::vector<SDL_Texture*> textures{};
 };
 }
 

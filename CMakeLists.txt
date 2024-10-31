@@ -12,6 +12,8 @@ project(sdl_template
         HOMEPAGE_URL "%%url%%"
         LANGUAGES CXX C)
 
+include(cmake/ProjectOptions.cmake)
+SetupProjectOptions()
 include(cmake/Dependencies.cmake)
 include(cmake/SetProjectWarnings.cmake)
 

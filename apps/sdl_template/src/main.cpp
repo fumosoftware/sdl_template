@@ -2,6 +2,8 @@
 // Created by fumosoftware 10/23/2024.
 //
 
+#include "SDL.h"
+#include "SDL_image.h"
 #include "sdl/context.h"
 
 sdl::Context unwrap_or_panic(std::expected<sdl::Context, std::string>&& maybe) {
@@ -21,11 +23,19 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char** argv) {
   //TODO: Create settings from a config file or command line arguments
   auto context = unwrap_or_panic(setup_sdl());
 
+
+  auto tex = IMG_LoadTexture(context.video.graphics_context.renderer, "data/smiley.png");
+  if(tex == nullptr) {
+    return 2;
+  }
+
+  context.video.graphics_context.textures.push_back(tex);
+
   bool is_running{true};
   while(is_running) {
     SDL_Event event{};
     while(SDL_PollEvent(&event)) {
-      if(event.type == SDL_EVENT_QUIT) {
+      if(event.type == SDL_QUIT) {
         is_running = false;
       }
     }
@@ -36,5 +46,5 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char** argv) {
   }
 
   teardown_sdl(context);
-  return 1;
+  return 0;
 }
