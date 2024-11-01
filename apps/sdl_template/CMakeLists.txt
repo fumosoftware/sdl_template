@@ -21,11 +21,7 @@ target_link_libraries(sdl_template_app
         fmt::fmt
 )
 
-if(${sdl_template_USE_SDL3})
-    target_link_libraries(sdl_template_app PRIVATE SDL3::SDL3)
-else()
-    target_link_libraries(sdl_template_app PRIVATE SDL2::SDL2main SDL2::SDL2 SDL2_image::SDL2_image)
-endif()
+target_link_libraries(sdl_template_app PRIVATE SDL2::SDL2main SDL2::SDL2 SDL2_image::SDL2_image)
 set_project_warnings(sdl_template_app)
 
 if(WIN32)
@@ -35,19 +31,11 @@ if(WIN32)
             COMMAND "${CMAKE_COMMAND}" -E copy ${CMAKE_CURRENT_SOURCE_DIR}/data/smiley.png $<TARGET_FILE_DIR:sdl_template_app>/data/smiley.png
             VERBATIM
     )
-    if(${sdl_template_USE_SDL3})
-        add_custom_command(
-                TARGET sdl_template_app POST_BUILD
-                COMMAND "${CMAKE_COMMAND}" -E copy $<TARGET_FILE:SDL3::SDL3-shared> $<TARGET_FILE_DIR:sdl_template_app>
-                VERBATIM
-        )
-    else()
-        add_custom_command(
-                TARGET sdl_template_app POST_BUILD
-                COMMAND "${CMAKE_COMMAND}" -E copy $<TARGET_FILE:SDL2::SDL2> $<TARGET_FILE_DIR:sdl_template_app>
-                COMMAND "${CMAKE_COMMAND}" -E copy $<TARGET_FILE:SDL2::SDL2main> $<TARGET_FILE_DIR:sdl_template_app>
-                COMMAND "${CMAKE_COMMAND}" -E copy $<TARGET_FILE:SDL2_image::SDL2_image> $<TARGET_FILE_DIR:sdl_template_app>
-                VERBATIM
-        )
-    endif()
+    add_custom_command(
+            TARGET sdl_template_app POST_BUILD
+            COMMAND "${CMAKE_COMMAND}" -E copy $<TARGET_FILE:SDL2::SDL2> $<TARGET_FILE_DIR:sdl_template_app>
+            COMMAND "${CMAKE_COMMAND}" -E copy $<TARGET_FILE:SDL2::SDL2main> $<TARGET_FILE_DIR:sdl_template_app>
+            COMMAND "${CMAKE_COMMAND}" -E copy $<TARGET_FILE:SDL2_image::SDL2_image> $<TARGET_FILE_DIR:sdl_template_app>
+            VERBATIM
+    )
 endif()
