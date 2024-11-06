@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   template-setup:
-    if: github.event.repository.isTemplate == false
+    if: gitub.event.repository.isTemplate
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +22,7 @@ jobs:
           echo "NEW_ORG=${{ github.repository_owner }}" >> $GITHUB_ENV
           echo "NEW_PROJ=${{ github.event.repository.name }}" >> $GITHUB_ENV
           echo "NEW_URL=${{ github.repositoryUrl }}" >> $GITHUB_ENV
+          echo "IS_TEMPLATE=${{github.event.repository.isTemplate}}" >> $GITHUB_ENV
 
       - name: Check Project Name
         run: |
@@ -38,9 +39,9 @@ jobs:
           # fill in placeholder for URL
           find apps -type f -exec sed -i "s|%%url%%|https://github.com/${{ env.NEW_ORG }}/${{ env.NEW_PROJ }}|gi" CMakeLists.txt {} +
 
-      - name: Clean Up
-        run: |
-          rm .github/workflows/template-janitor.yml
+      #- name: Clean Up
+        #run: |
+          #rm .github/workflows/template-janitor.yml
 
       - uses: EndBug/add-and-commit@v9
         with:
