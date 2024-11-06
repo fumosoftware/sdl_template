@@ -39,9 +39,9 @@ jobs:
           # fill in placeholder for URL
           find apps -type f -exec sed -i "s|%%url%%|https://github.com/${{ env.NEW_ORG }}/${{ env.NEW_PROJ }}|gi" CMakeLists.txt {} +
 
-      #- name: Clean Up
-        #run: |
-          #rm .github/workflows/template-janitor.yml
+      - name: Clean Up
+        run: |
+          rm .github/workflows/template-janitor.yml
 
       - uses: EndBug/add-and-commit@v9
         with:
