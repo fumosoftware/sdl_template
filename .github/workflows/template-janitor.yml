@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   template-setup:
-    if: gitub.event.repository.isTemplate
+    if: github.event.repository.isTemplate
     runs-on: ubuntu-latest
 
     steps:
