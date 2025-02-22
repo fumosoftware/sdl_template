@@ -34,6 +34,20 @@
       }
     },
     {
+      "name": "unix-common",
+      "description": "Setttings for Unix-like environment",
+      "hidden": true,
+      "inherits": "common",
+      "condition": {
+        "type": "inList",
+        "string": "${hostSystemName}",
+        "list": [
+          "Linux",
+          "Darwin"
+        ]
+      }
+    },
+    {
       "name": "Windows GCC(Debug)",
       "displayName": "GCC Debug",
       "description": "Windows debug build using GCC",
@@ -54,6 +68,29 @@
         "CMAKE_CXX_COMPILER": "g++",
         "CMAKE_BUILD_TYPE": "Release"
       }
+    },
+    {
+      "name": "Unix Clang(Debug)",
+      "displayName": "Clang Debug",
+      "description": "Unix debug build using Clang",
+      "inherits": "unix-common",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "Unix Clang(Release)",
+      "displayName": "Clang Release",
+      "description": "Unix release build using Clang",
+      "inherits": "unix-common",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang++",
+        "CMAKE_BUILD_TYPE": "Release"
+      }
     }
+
   ]
 }

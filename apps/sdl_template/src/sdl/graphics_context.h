@@ -6,7 +6,7 @@
 #define sdl_template_SDL_GRAPHICS_CONTEXT_H
 
 #include <vector>
-#include "SDL.h"
+#include <SDL3/SDL.h>
 
 namespace sdl {
 struct GraphicsContext {

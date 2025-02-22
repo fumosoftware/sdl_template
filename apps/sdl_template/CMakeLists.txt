@@ -16,12 +16,8 @@ add_executable(sdl_template_app src/main.cpp
         src/sdl/context.cpp
         src/sdl/context.h
         src/sdl/video.cpp)
-target_link_libraries(sdl_template_app
-        PRIVATE
-        fmt::fmt
-)
 
-target_link_libraries(sdl_template_app PRIVATE SDL2::SDL2main SDL2::SDL2 SDL2_image::SDL2_image)
+target_link_libraries(sdl_template_app PRIVATE SDL3::SDL3 SDL3_image::SDL3_image)
 set_project_warnings(sdl_template_app)
 
 if(WIN32)

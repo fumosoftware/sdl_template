@@ -4,7 +4,7 @@
 
 #include "video.h"
 
-#include "SDL.h"
+#include <SDL3/SDL.h>
 
 void render(sdl::Video const& video) noexcept {
   auto& [renderer, _] = video.graphics_context;
@@ -12,6 +12,6 @@ void render(sdl::Video const& video) noexcept {
 
   SDL_RenderClear(renderer);
 
-  SDL_RenderCopy(renderer, video.graphics_context.textures[0],nullptr, nullptr);
+  SDL_RenderTexture(renderer, video.graphics_context.textures[0],nullptr, nullptr);
   SDL_RenderPresent(renderer);
 }

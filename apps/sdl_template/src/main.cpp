@@ -2,8 +2,8 @@
 // Created by fumosoftware 10/23/2024.
 //
 
-#include "SDL.h"
-#include "SDL_image.h"
+#include <SDL3/SDL.h>
+#include <SDL3_image/SDL_image.h>
 #include "sdl/context.h"
 
 sdl::Context unwrap_or_panic(std::expected<sdl::Context, std::string>&& maybe) {
@@ -24,7 +24,7 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char** argv) {
   auto context = unwrap_or_panic(setup_sdl());
 
 
-  auto tex = IMG_LoadTexture(context.video.graphics_context.renderer, "data/smiley.png");
+  //auto tex = IMG_LoadTexture(context.video.graphics_context.renderer, "data/smiley.png");
   if(tex == nullptr) {
     return 2;
   }
@@ -35,7 +35,7 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char** argv) {
   while(is_running) {
     SDL_Event event{};
     while(SDL_PollEvent(&event)) {
-      if(event.type == SDL_QUIT) {
+      if(event.type == SDL_EVENT_QUIT) {
         is_running = false;
       }
     }

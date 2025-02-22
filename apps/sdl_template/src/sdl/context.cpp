@@ -4,7 +4,7 @@
 
 #include "context.h"
 
-#include <fmt/format.h>
+//#include <fmt/format.h>
 
 
 using namespace std::string_literals;
@@ -12,8 +12,8 @@ namespace {
 std::expected<sdl::Video, std::string> setup_sdl_video() {
   SDL_Window* window{nullptr};
   SDL_Renderer* renderer{nullptr};
-  if(SDL_CreateWindowAndRenderer(600, 380, 0, &window, &renderer) != 0) {
-    return std::unexpected{fmt::format("Failed to setup video: {}", SDL_GetError())};
+  if(SDL_CreateWindowAndRenderer("Title", 640, 380, 0, &window, &renderer) == false) {
+    return std::unexpected{SDL_GetError()};
   }
 
   return sdl::Video{
@@ -39,9 +39,9 @@ std::expected<sdl::Context, std::string> setup_sdl() noexcept {
   }
 
   //SDL_INIT_VIDEO implies also initializing SDL_INIT_EVENTS
-  if(auto const did_init = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS); did_init != 0) {
+  if(auto const did_init = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS); did_init == false) {
     SDL_assert(!did_init);
-    return std::unexpected{fmt::format("SDL could not be initialized: {}", SDL_GetError())};
+    return std::unexpected{SDL_GetError()};
   }
 
   auto video = setup_sdl_video();
