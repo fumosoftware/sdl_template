@@ -17,4 +17,4 @@ SetupProjectOptions()
 include(cmake/Dependencies.cmake)
 include(cmake/SetProjectWarnings.cmake)
 
-add_subdirectory(apps)
+add_subdirectory(src)
