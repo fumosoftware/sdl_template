@@ -23,15 +23,15 @@ function(
             -Werror #warnings as errors
     )
 
-    set(GCC_OPTIONS
-            ${CLANG_OPTIONS}
-            -Wmisleading-indentation
-            -Wduplicated-cond
-            -Wduplicated-branches
-            -Wlogical-op
-            -Wuseless-cast
-            -Wsuggest-override
-    )
+    #set(GCC_OPTIONS
+     #       ${CLANG_OPTIONS}
+     #       -Wmisleading-indentation
+     #       -Wduplicated-cond
+     #       -Wduplicated-branches
+     #       -Wlogical-op
+     #       -Wuseless-cast
+     #       -Wsuggest-override
+    #)
 
 
     target_compile_options(${project_name}
